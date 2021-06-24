@@ -1,0 +1,16 @@
+.border {
+  border-radius: 10px !important;
+}
+
+::ng-deep .show {
+  border-radius: 10px !important;
+}
+
+::ng-deep .save {
+  border-radius: 10px !important;
+}
+
+::ng-deep table .fa {
+  font-size: 1.5em;
+  cursor: pointer;
+}

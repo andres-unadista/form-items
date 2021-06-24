@@ -1,37 +1,42 @@
-<form action="">
-  <div class="input-group input-group-lg mb-2">
-    <span class="input-group-addon">
-      <i class="fa fa-user" aria-hidden="true"></i>
-    </span>
-    <input type="text" name="user" id="user" class="form-control" placeholder="Usuario" aria-describedby="user" />
+<form action="" class="bg-light p-3 save" [formGroup]="formGroupCard" (ngSubmit)="saveCard()">
+  <div class="pb-2">
+    <h3 class="text-center">Añadir tarjeta</h3>
   </div>
   <div class="input-group input-group-lg mb-2">
-    <span class="input-group-addon">
-      <i class="fa fa-credit-card" aria-hidden="true"></i>
+    <span class="input-group-text">
+      <i class="fa fa-user" aria-hidden="true" [class.valid]="formGroupCard.get('user')?.valid" [class.invalid]="formGroupCard.get('user')?.invalid && (formGroupCard.get('user')?.touched || formGroupCard.get('user')?.dirty)"></i>
     </span>
-    <input type="text" name="number" id="numberCard" class="form-control" placeholder="Número tarjeta" aria-describedby="number" />
+    <input type="text" formControlName="user" id="user" class="form-control" placeholder="Usuario" aria-describedby="user" />
+  </div>
+  <div class="input-group input-group-lg mb-2">
+    <span class="input-group-text">
+      <i class="fa fa-credit-card" aria-hidden="true" [class.valid]="formGroupCard.get('numberCard')?.valid" [class.invalid]="formGroupCard.get('numberCard')?.invalid && (formGroupCard.get('numberCard')?.touched || formGroupCard.get('numberCard')?.dirty)"></i>
+    </span>
+    <input type="text" formControlName="numberCard" maxlength="16" id="numberCard" class="form-control" placeholder="Número tarjeta" aria-describedby="number" />
   </div>
   <div class="row">
     <div class="col-md-7">
       <div class="input-group input-group-lg mb-2">
-        <span class="input-group-addon">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
+        <span class="input-group-text">
+          <i class="fa fa-calendar" aria-hidden="true" [class.valid]="formGroupCard.get('dateCard')?.valid" [class.invalid]="formGroupCard.get('dateCard')?.invalid && (formGroupCard.get('dateCard')?.touched || formGroupCard.get('dateCard')?.dirty)"></i>
         </span>
-        <input type="text" name="date" id="dateCard" class="form-control" placeholder="MM/YY" aria-describedby="date" />
+        <input type="text" formControlName="dateCard" maxlength="5" id="dateCard" class="form-control" placeholder="MM/YY" aria-describedby="date" />
       </div>
     </div>
     <div class="col-md-5">
       <div class="input-group input-group-lg mb-2">
-        <span class="input-group-addon">
-          <i class="fa fa-key" aria-hidden="true"></i>
+        <span class="input-group-text">
+          <i class="fa fa-key" aria-hidden="true" [class.valid]="formGroupCard.get('cvv')?.valid" [class.invalid]="formGroupCard.get('cvv')?.invalid && (formGroupCard.get('cvv')?.touched || formGroupCard.get('cvv')?.dirty)"></i>
         </span>
-        <input type="text" name="key" id="keyCard" class="form-control" placeholder="CVVV" aria-describedby="key"/>
+        <input type="text" formControlName="cvv" maxlength="3" id="keyCard" class="form-control" placeholder="cvv" aria-describedby="key"/>
       </div>
     </div>
   </div>
   <div class="row">
-    <button type="button" class="btn btn-success">
-      <i class="fa fa-database" aria-hidden="true"></i>&nbsp;Guardar
-    </button>
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-success btn-lg" [disabled]="formGroupCard.invalid">
+        <i class="fa fa-database" aria-hidden="true"></i>&nbsp;Guardar
+      </button>
+    </div>
   </div>
 </form>
